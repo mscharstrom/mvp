@@ -1,0 +1,861 @@
+{
+  "Abaddon": [
+    "Save",
+    "Sustain",
+    "Aura",
+    "Melee"
+  ],
+  "Alchemist": [
+    "Carry",
+    "Sustain",
+    "Scaling",
+    "Tower Push",
+    "Melee"
+  ],
+  "Ancient Apparition": [
+    "Magic Damage",
+    "Teamfight",
+    "Support",
+    "Ranged"
+  ],
+  "Anti-Mage": [
+    "Carry",
+    "Hard Carry",
+    "Split Push",
+    "Scaling",
+    "Melee"
+  ],
+  "Arc Warden": [
+    "Carry",
+    "Split Push",
+    "Scaling",
+    "Micro",
+    "Ranged"
+  ],
+  "Axe": [
+    "Frontliner",
+    "Initiator",
+    "Disablen",
+    "Teamfight",
+    "Wave Clear",
+    "Melee"
+  ],
+  "Bane": [
+    "Disabler",
+    "Single Target",
+    "Save",
+    "Ranged"
+  ],
+  "Batrider": [
+    "Initiator",
+    "Magic Damage",
+    "Ranged"
+  ],
+  "Beastmaster": [
+    "Disabler",
+    "Tower Push",
+    "Teamfight",
+    "Initiator",
+    "Aura",
+    "Melee"
+  ],
+  "Bloodseeker": [
+    "Silence",
+    "Sustain",
+    "Carry",
+    "Melee"
+  ],
+  "Bounty Hunter": [
+    "Roamer",
+    "Catch",
+    "Melee"
+  ],
+  "Brewmaster": [
+    "Dispel",
+    "Micro",
+    "Teamfight",
+    "Initiator",
+    "Melee"
+  ],
+  "Bristleback": [
+    "Frontliner",
+    "Sustain",
+    "Aura",
+    "Tower Push",
+    "Melee"
+  ],
+  "Broodmother": [
+    "Split Push",
+    "Micro",
+    "Tower Push",
+    "Melee"
+  ],
+  "Centaur Warrunner": [
+    "Frontliner",
+    "Initiator",
+    "Aura",
+    "Catch",
+    "Wave Clear",
+    "Melee"
+  ],
+  "Chaos Knight": [
+    "Carry",
+    "Disabler",
+    "Illusions",
+    "Scaling",
+    "Melee"
+  ],
+  "Chen": [
+    "Micro",
+    "Aura",
+    "Heal",
+    "Tower Push",
+    "Ranged"
+  ],
+  "Clinkz": [
+    "Carry",
+    "Burst",
+    "Tower Push",
+    "Ranged"
+  ],
+  "Clockwerk": [
+    "Initiator",
+    "Disabler",
+    "Catch",
+    "Roamer",
+    "Melee"
+  ],
+  "Crystal Maiden": [
+    "Disable",
+    "Teamfight",
+    "Soft Support",
+    "Ranged"
+  ],
+  "Dark Seer": [
+    "Aura",
+    "Wave Clear",
+    "Initiator",
+    "Teamfight",
+    "Melee"
+  ],
+  "Dark Willow": [
+    "Disable",
+    "Magic Damage",
+    "Teamfight",
+    "Escape",
+    "Ranged"
+  ],
+  "Dawnbreaker": [
+    "Teamfight",
+    "Save",
+    "Escape",
+    "Global",
+    "Melee"
+  ],
+  "Dazzle": [
+    "Save",
+    "Heal",
+    "Sustain",
+    "Ranged"
+  ],
+  "Death Prophet": [
+    "Tower Push",
+    "Sustain",
+    "Teamfight",
+    "Silence",
+    "Wave Clear",
+    "Ranged"
+  ],
+  "Disruptor": [
+    "Silence",
+    "Disable",
+    "CC",
+    "Catch",
+    "Teamfight",
+    "Ranged"
+  ],
+  "Doom": [
+    "Silence",
+    "Disabler",
+    "Initiator",
+    "Scaling",
+    "Melee"
+  ],
+  "Dragon Knight": [
+    "Carry",
+    "Frontliner",
+    "Disabler",
+    "Tower Push",
+    "Sustain",
+    "Melee",
+    "Ranged"
+  ],
+  "Drow Ranger": [
+    "Carry",
+    "Silence",
+    "Tower Push",
+    "Ranged"
+  ],
+  "Earth Spirit": [
+    "Disabler",
+    "Silence",
+    "Initiator",
+    "Teamfight",
+    "Melee"
+  ],
+  "Earthshaker": [
+    "Disabler",
+    "CC",
+    "Initiator",
+    "Teamfight",
+    "Melee"
+  ],
+  "Elder Titan": [
+    "Disabler",
+    "Teamfight",
+    "CC",
+    "Melee"
+  ],
+  "Ember Spirit": [
+    "Carry",
+    "Escape",
+    "Magic Damage",
+    "Catch",
+    "CC",
+    "Wave Clear",
+    "Melee"
+  ],
+  "Enchantress": [
+    "Heal",
+    "Tower Push",
+    "Micro",
+    "Ranged"
+  ],
+  "Enigma": [
+    "Teamfight",
+    "CC",
+    "Tower Push",
+    "Disabler",
+    "Micro",
+    "Ranged"
+  ],
+  "Faceless Void": [
+    "Teamfight",
+    "CC",
+    "Scaling",
+    "Carry",
+    "Disabler",
+    "Melee"
+  ],
+  "Grimstroke": [
+    "Disabler",
+    "Silence",
+    "Teamfight",
+    "Ranged"
+  ],
+  "Gyrocopter": [
+    "Carry",
+    "Teamfight",
+    "Magic Damage",
+    "Wave Clear",
+    "Ranged"
+  ],
+  "Hoodwink": [
+    "Burst",
+    "Disabler",
+    "Escape",
+    "Ranged"
+  ],
+  "Huskar": [
+    "Carry",
+    "Burst",
+    "Sustain",
+    "Scaling",
+    "Ranged"
+  ],
+  "Invoker": [
+    "Disabler",
+    "CC",
+    "Magic Damage",
+    "Teamfight",
+    "Scaling",
+    "Ranged"
+  ],
+  "Io": [
+    "Save",
+    "Sustain",
+    "Global",
+    "Ranged"
+  ],
+  "Jakiro": [
+    "CC",
+    "Teamfight",
+    "Wave Clear",
+    "Push",
+    "Magic Damage",
+    "Ranged"
+  ],
+  "Juggernaut": [
+    "Carry",
+    "Sustain",
+    "Burst",
+    "Tower Push",
+    "Melee"
+  ],
+  "Keeper of the Light": [
+    "Wave Clear",
+    "CC",
+    "Global",
+    "Ranged"
+  ],
+  "Kunkka": [
+    "Frontliner",
+    "Disabler",
+    "Teamfight",
+    "Catch",
+    "Initiator",
+    "Melee"
+  ],
+  "Legion Commander": [
+    "Carry",
+    "Initiator",
+    "Disabler",
+    "Scaling",
+    "Melee"
+  ],
+  "Leshrac": [
+    "Disabler",
+    "Magic Damage",
+    "Tower Push",
+    "Wave Clear",
+    "Teamfight",
+    "Ranged"
+  ],
+  "Lich": [
+    "Disabler",
+    "Teamfight",
+    "Magic Damage",
+    "Ranged"
+  ],
+  "Lifestealer": [
+    "Sustain",
+    "Carry",
+    "Escape",
+    "Melee"
+  ],
+  "Lina": [
+    "Burst",
+    "Wave Clear",
+    "Magic Damage",
+    "Carry",
+    "Ranged"
+  ],
+  "Lion": [
+    "Disabler",
+    "Burst",
+    "Ranged"
+  ],
+  "Lone Druid": [
+    "Carry",
+    "Tower Push",
+    "Split Push",
+    "Sustain",
+    "Micro",
+    "Melee"
+  ],
+  "Luna": [
+    "Tower Push",
+    "Teamfight",
+    "Carry",
+    "Magic Damage",
+    "Wave Clear",
+    "Ranged"
+  ],
+  "Lycan": [
+    "Tower Push",
+    "Micro",
+    "Aura",
+    "Split Push",
+    "Melee"
+  ],
+  "Magnus": [
+    "Initiator",
+    "CC",
+    "Disabler",
+    "Wave Clear",
+    "Teamfight",
+    "Empower",
+    "Melee"
+  ],
+  "Marci": [
+    "Initiator",
+    "Scaling",
+    "Melee"
+  ],
+  "Mars": [
+    "Initiator",
+    "Disabler",
+    "Frontliner",
+    "Teamfight",
+    "Melee"
+  ],
+  "Medusa": [
+    "Carry",
+    "Wave Clear",
+    "Scaling",
+    "Ranged"
+  ],
+  "Meepo": [
+    "Micro",
+    "Scaling",
+    "Disabler",
+    "Burst",
+    "Melee"
+  ],
+  "Mirana": [
+    "Escape",
+    "Disabler",
+    "Magic Damage",
+    "Ranged"
+  ],
+  "Monkey King": [
+    "Carry",
+    "Scaling",
+    "Disabler",
+    "Teamfight",
+    "Melee"
+  ],
+  "Morphling": [
+    "Carry",
+    "Escape",
+    "Burst",
+    "Scaling",
+    "Ranged"
+  ],
+  "Muerta": [
+    "Carry",
+    "Disabler",
+    "Magic Damage",
+    "Ranged"
+  ],
+  "Naga Siren": [
+    "Illusions",
+    "Split Push",
+    "Disabler",
+    "Micro",
+    "Melee"
+  ],
+  "Natures Prophet": [
+    "Tower Push",
+    "Global",
+    "Split Push",
+    "Ranged"
+  ],
+  "Necrophos": [
+    "Sustain",
+    "Burst",
+    "Aura",
+    "Magic Damage",
+    "Ranged"
+  ],
+  "Night Stalker": [
+    "Silence",
+    "Scaling",
+    "Roamer",
+    "Disabler",
+    "Melee"
+  ],
+  "Nyx Assassin": [
+    "Disabler",
+    "Invis",
+    "Anti-Mage",
+    "Melee"
+  ],
+  "Ogre Magi": [
+    "Disabler",
+    "Melee"
+  ],
+  "Omniknight": [
+    "Save",
+    "Sustain",
+    "Aura",
+    "Melee"
+  ],
+  "Oracle": [
+    "Save",
+    "Sustain",
+    "Dispel",
+    "Ranged"
+  ],
+  "Outworld Destroyer": [
+    "Carry",
+    "Burst",
+    "Scaling",
+    "Magic Damage",
+    "Ranged"
+  ],
+  "Pangolier": [
+    "Disabler",
+    "Initiator",
+    "Magic Damage",
+    "Teamfight",
+    "Melee"
+  ],
+  "Phantom Assassin": [
+    "Carry",
+    "Scaling",
+    "Burst",
+    "Melee"
+  ],
+  "Phantom Lancer": [
+    "Illusions",
+    "Scaling",
+    "Split Push",
+    "Melee"
+  ],
+  "Phoenix": [
+    "Team Fight",
+    "Escape",
+    "CC",
+    "Magic Damage",
+    "Sustain",
+    "Ranged"
+  ],
+  "Primal Beast": [
+    "Team Fight",
+    "Disabler",
+    "Initiator",
+    "Escape",
+    "Melee"
+  ],
+  "Puck": [
+    "Disabler",
+    "CC",
+    "Escape",
+    "Magic Damage",
+    "Teamfight",
+    "Ranged"
+  ],
+  "Pudge": [
+    "Initiator",
+    "Frontliner",
+    "Catch",
+    "Disabler",
+    "Sustain",
+    "Melee"
+  ],
+  "Pugna": [
+    "Magic Damage",
+    "Dispel",
+    "Tower Push",
+    "Save",
+    "Ranged"
+  ],
+  "Queen of Pain": [
+    "Burst",
+    "Magic Damage",
+    "Wave Clear",
+    "Escape",
+    "Scaling",
+    "Ranged"
+  ],
+  "Razor": [
+    "Scaling",
+    "Teamfight",
+    "Wave Clear",
+    "Frontliner",
+    "Ranged"
+  ],
+  "Riki": [
+    "Silence",
+    "Escape",
+    "Disabler",
+    "Catch",
+    "Roamer",
+    "Melee"
+  ],
+  "Rubick": [
+    "Disabler",
+    "CC",
+    "Teamfight",
+    "Wave Clear",
+    "Ranged"
+  ],
+  "Sand King": [
+    "Initiator",
+    "CC",
+    "Teamfight",
+    "Magic Damage",
+    "Wave Clear",
+    "Melee"
+  ],
+  "Shadow Demon": [
+    "Save",
+    "Dispel",
+    "Disabler",
+    "Teamfight",
+    "Ranged"
+  ],
+  "Shadow Fiend": [
+    "Magic Damage",
+    "Wave Clear",
+    "Burst",
+    "Teamfight",
+    "Scaling",
+    "Ranged"
+  ],
+  "Shadow Shaman": [
+    "Disabler",
+    "CC",
+    "Tower Push",
+    "Teamfight",
+    "Ranged"
+  ],
+  "Silencer": [
+    "Silence",
+    "Global",
+    "Scaling",
+    "Disabler",
+    "Ranged"
+  ],
+  "Skywrath Mage": [
+    "Burst",
+    "Magic Damage",
+    "Silence",
+    "Ranged"
+  ],
+  "Slardar": [
+    "Frontliner",
+    "Initiator",
+    "Disabler",
+    "Scaling",
+    "Melee"
+  ],
+  "Slark": [
+    "Carry",
+    "Escape",
+    "Scaling",
+    "Catch",
+    "Melee"
+  ],
+  "Snapfire": [
+    "Burst",
+    "Teamfight",
+    "Wave Clear",
+    "Ranged"
+  ],
+  "Sniper": [
+    "Scaling",
+    "Wave Clear",
+    "Carry",
+    "Ranged"
+  ],
+  "Spectre": [
+    "Carry",
+    "Global",
+    "Scaling",
+    "Escape",
+    "Melee"
+  ],
+  "Spirit Breaker": [
+    "Initiator",
+    "Frontliner",
+    "Catch",
+    "Disabler",
+    "Roamer",
+    "Melee"
+  ],
+  "Storm Spirit": [
+    "Catch",
+    "Escape",
+    "Scaling",
+    "Ranged"
+  ],
+  "Sven": [
+    "Carry",
+    "Frontliner",
+    "Disabler",
+    "Wave Clear",
+    "Melee"
+  ],
+  "Techies": [
+    "Burst",
+    "CC",
+    "Wave Clear",
+    "Teamfight",
+    "Ranged"
+  ],
+  "Templar Assassin": [
+    "Carry",
+    "Scaling",
+    "Burst",
+    "Tower Push",
+    "Wave Clear",
+    "Ranged"
+  ],
+  "Terrorblade": [
+    "Carry",
+    "Illusions",
+    "Scaling",
+    "Tower Push",
+    "Ranged"
+  ],
+  "Tidehunter": [
+    "Frontliner",
+    "Initiator",
+    "Disabler",
+    "Teamfight",
+    "Wave Clear",
+    "Melee"
+  ],
+  "Timbersaw": [
+    "Magic Damage",
+    "Escape",
+    "Frontliner",
+    "Sustain",
+    "Wave Clear",
+    "Melee"
+  ],
+  "Tinker": [
+    "Wave Clear",
+    "Magic Damage",
+    "Scaling",
+    "Ranged"
+  ],
+  "Tiny": [
+    "Burst",
+    "Initiator",
+    "Catch",
+    "Scaling",
+    "Melee"
+  ],
+  "Treant Protector": [
+    "Save",
+    "Sustain",
+    "Aura",
+    "CC",
+    "Tower Push",
+    "Melee"
+  ],
+  "Troll Warlord": [
+    "Carry",
+    "Scaling",
+    "Disabler",
+    "Melee"
+  ],
+  "Tusk": [
+    "Initiator",
+    "Catch",
+    "Save",
+    "Disabler",
+    "Melee"
+  ],
+  "Underlord": [
+    "Frontliner",
+    "Aura",
+    "Wave Clear",
+    "CC",
+    "Teamfight",
+    "Melee"
+  ],
+  "Undying": [
+    "Sustain",
+    "Aura",
+    "Teamfight",
+    "Frontliner",
+    "Melee"
+  ],
+  "Ursa": [
+    "Carry",
+    "Burst",
+    "Scaling",
+    "Melee"
+  ],
+  "Vengeful Spirit": [
+    "Disabler",
+    "Save",
+    "Aura",
+    "Catch",
+    "Ranged"
+  ],
+  "Venomancer": [
+    "Tower Push",
+    "Magic Damage",
+    "Teamfight",
+    "Sustain",
+    "Ranged"
+  ],
+  "Viper": [
+    "Carry",
+    "Magic Damage",
+    "Wave Clear",
+    "Scaling",
+    "Ranged"
+  ],
+  "Visage": [
+    "Tower Push",
+    "Micro",
+    "CC",
+    "Scaling",
+    "Ranged"
+  ],
+  "Void Spirit": [
+    "Escape",
+    "Catch",
+    "Magic Damage",
+    "Scaling",
+    "CC",
+    "Melee"
+  ],
+  "Warlock": [
+    "Save",
+    "CC",
+    "Teamfight",
+    "Sustain",
+    "Disabler",
+    "Ranged"
+  ],
+  "Weaver": [
+    "Carry",
+    "Save",
+    "Escape",
+    "Scaling",
+    "Sustain",
+    "Ranged"
+  ],
+  "Windranger": [
+    "Disabler",
+    "Escape",
+    "Scaling",
+    "Catch",
+    "Ranged"
+  ],
+  "Winter Wyvern": [
+    "Save",
+    "CC",
+    "Disabler",
+    "Teamfight",
+    "Wave Clear",
+    "Ranged"
+  ],
+  "Witch Doctor": [
+    "Disabler",
+    "Sustain",
+    "Teamfight",
+    "Ranged"
+  ],
+  "Wraith King": [
+    "Carry",
+    "Frontliner",
+    "Scaling",
+    "CC",
+    "Melee"
+  ],
+  "Zeus": [
+    "Magic Damage",
+    "Global",
+    "Wave Clear",
+    "Scaling",
+    "Ranged"
+  ]
+}
