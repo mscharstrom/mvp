@@ -9,10 +9,6 @@ with open("data/hero_tags.json") as f:
 with open("config/hero_pool.json") as f:
     HERO_POOL = json.load(f)
 
-# Load OpenDota winrate data (optional, placeholder here)
-with open("data/hero_winrates.json") as f:
-    HERO_WINRATES = json.load(f)
-
 def input_hero_list(prompt: str) -> List[str]:
     print(prompt)
     return [h.strip() for h in input("Comma-separated heroes: ").split(",")]
@@ -48,7 +44,6 @@ def get_attack_type(hero: str) -> str:
 
 def score_hero(hero: str, team_picks: List[str], enemy_picks: List[str]) -> float:
     tags = HERO_TAGS.get(hero, [])
-    winrate = HERO_WINRATES.get(hero, 50)
     comfort = HERO_POOL.get(hero, "ok")
 
     role_score = 0
@@ -61,7 +56,7 @@ def score_hero(hero: str, team_picks: List[str], enemy_picks: List[str]) -> floa
 
     comfort_mod = {"very_comfortable": 1.2, "comfortable": 1.1, "ok": 1.0, "learning": 0.8}
     base_score = (2 * role_score + synergy_score) * comfort_mod.get(comfort, 1.0)
-    final_score = base_score + (winrate - 50) * 0.1
+    final_score = base_score
 
     return round(final_score, 2)
 
@@ -100,7 +95,7 @@ def summarize_roles(picks: List[str]) -> Dict[str, int]:
     return role_counts
 
 def print_role_summary(role_counts: Dict[str, int], title: str):
-    print(f"{title} tags:")
+    print(f"\n{title} tags:")
     for role, count in sorted(role_counts.items(), key=lambda x: (-x[1], x[0])):
         if role not in ("Melee", "Ranged") and count > 0:
             print(f"{role.ljust(15)} {'+' * count}")
@@ -123,7 +118,8 @@ if __name__ == "__main__":
     print_role_summary(summarize_roles(team), "Team")
     print_role_summary(summarize_roles(enemy), "Enemy")
 
-    heroes_that_fill = get_heroes_fulfilling_roles(missing, set(team + enemy))
+    all_picked = set(team + enemy)
+    heroes_that_fill = get_heroes_fulfilling_roles(missing, all_picked)
     print("\nHeroes that fill missing roles:")
     for hero, roles in heroes_that_fill.items():
         atk_icon = "🗡️" if get_attack_type(hero) == "Melee" else "🏹"
@@ -134,3 +130,4 @@ if __name__ == "__main__":
     for hero, info in suggestions[:5]:
         atk_icon = "🗡️" if info['atk'] == "Melee" else "🏹"
         print(f"{hero} {atk_icon}: {info['score']} [{', '.join(info['tags'])}]")
+
