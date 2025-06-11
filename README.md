@@ -1,12 +1,12 @@
 # 🧠 MVP – Most Valuable Pick
 
-MVP is a smart Dota 2 hero suggestion tool that helps you draft the best possible hero based on:
+MVP is a Dota 2 hero suggestion tool that helps you draft the best possible hero based on:
 - Team synergy
 - Countering enemy picks
 - Filling missing team roles
 - Your personal hero comfort levels
 
-It fetches real-time synergy and matchup data from [Stratz's GraphQL API](https://stratz.com/) and enhances it with your custom preferences.
+It fetches synergy and matchup data from [Stratz's GraphQL API](https://stratz.com/) and enhances it with your custom preferences.
 
 ---
 
@@ -33,14 +33,14 @@ It fetches real-time synergy and matchup data from [Stratz's GraphQL API](https:
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/yourusername/mvp-dota2.git
-cd mvp-dota2
+git clone https://github.com/mscharstrom/mvp.git
+cd mvp
 ```
 
 ### 2. Install Python Dependencies
 
 ```bash
-pip install requests python-dotenv
+pip install -r requirements.txt
 ```
 
 ---
@@ -48,9 +48,8 @@ pip install requests python-dotenv
 ### 3. Add Your STRATZ API Token
 
 1. Go to https://stratz.com
-2. Open Developer Tools → Application → Local Storage
-3. Copy the value of `stratz-auth`
-4. Create a file called `.env` in the root folder and add:
+2. Find your API token under your profile
+3. Create a file called `.env` in the root folder and add:
 
 ```env
 STRATZ_API_TOKEN=your_token_here
@@ -83,11 +82,11 @@ Tag each hero with their roles. Example:
 ```json
 {
   "Axe": ["Frontliner", "Initiator", "Wave Clear", "Melee"],
-  "Dazzle": ["Support", "Healer", "Ranged"]
+  "Dazzle": ["Support", "Save", "Ranged"]
 }
 ```
 
-These tags are used to identify missing roles in your team and boost score accordingly.
+These tags are used to identify missing roles in your team and boost score accordingly. Add your own touch!
 
 ---
 
@@ -112,7 +111,7 @@ Run this script **before using the picker** to update local synergy/matchup data
 python fetch_hero_matchups.py
 ```
 
-It queries STRATZ and saves the results to `data/hero_synergy_matchups.json`.
+It queries STRATZ and saves the results to `data/hero_synergy_matchups.json` based on your hero pool.
 
 ---
 
@@ -163,7 +162,9 @@ You can use MVP whether you play offlane, mid, support, or carry. It’s **role-
 
 ## 📌 TODO
 
-- Web interface for hero suggestion
+- Web interface/GUI for hero suggestion
+- Improve scoring
+- Improve hero tags
 - Import live draft from Dota client
 - Add synergy weight configuration
 - Automatic STRATZ ID sync
@@ -173,7 +174,5 @@ You can use MVP whether you play offlane, mid, support, or carry. It’s **role-
 ## 🧠 Credits
 
 - [STRATZ GraphQL API](https://docs.stratz.com)
-- Hero role tagging partially inspired by OpenDota
-- All logic and strategy customized to your playstyle
 
 ---
