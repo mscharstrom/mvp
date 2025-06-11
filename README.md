@@ -101,6 +101,12 @@ This file should map hero names to their STRATZ hero IDs. It’s usually static,
 }
 ```
 
+Generate the file by running:
+
+```bash
+python map_hero_id.py
+```
+
 ---
 
 ## 🔄 Fetch Synergy & Matchup Data
@@ -148,8 +154,7 @@ Mars 🗡️: 8.7 [Frontliner, Initiator]
 
 ## 🛠️ Optional Improvements
 
-- Add new heroes to `hero_name_to_id.json`
-- Expand `hero_tags.json` with more role tags
+- Expand `hero_tags.json` with more/cleaner role tags
 - Adjust scoring logic in `main.py` to suit your playstyle
 
 ---
