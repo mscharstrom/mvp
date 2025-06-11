@@ -104,7 +104,7 @@ This file should map hero names to their STRATZ hero IDs. It’s usually static,
 Generate the file by running:
 
 ```bash
-python map_hero_id.py
+python generate_hero_id_map.py
 ```
 
 ---
