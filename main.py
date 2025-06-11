@@ -66,7 +66,7 @@ def score_hero(hero: str, team_picks: List[str], enemy_picks: List[str]) -> floa
 
     # Weighted total
     comfort_mod = {"very_comfortable": 1.2, "comfortable": 1.1, "ok": 1.0, "learning": 0.8}
-    score = (2 * role_score + 0.5 * synergy_score + counter_score) * comfort_mod.get(comfort, 1.0)
+    score = (1.5 * role_score + 1.0 * synergy_score + 1.2 * counter_score) * comfort_mod.get(comfort, 1.0)
     return round(score, 2)
 
 def suggest_heroes(team_picks: List[str], enemy_picks: List[str], missing_roles: List[str]) -> List[str]:
