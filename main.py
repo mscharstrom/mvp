@@ -9,6 +9,9 @@ with open("data/hero_tags.json") as f:
 with open("config/hero_pool.json") as f:
     HERO_POOL = json.load(f)
 
+with open("data/hero_synergy_matchups.json") as f:
+    HERO_MATCHUPS = json.load(f)
+
 def input_hero_list(prompt: str) -> List[str]:
     print(prompt)
     return [h.strip() for h in input("Comma-separated heroes: ").split(",")]
@@ -45,20 +48,26 @@ def get_attack_type(hero: str) -> str:
 def score_hero(hero: str, team_picks: List[str], enemy_picks: List[str]) -> float:
     tags = HERO_TAGS.get(hero, [])
     comfort = HERO_POOL.get(hero, "ok")
+    matchups = HERO_MATCHUPS.get(hero, {})
 
-    role_score = 0
-    synergy_score = 0
-
+    # Role score: 1 point per missing role covered
     missing_roles = get_missing_roles(team_picks)
-    for role in tags:
-        if role in missing_roles:
-            role_score += 1
+    role_score = sum(1 for role in tags if role in missing_roles)
 
+    # Synergy: sum synergy with teammates
+    synergy_score = 0
+    for mate in team_picks:
+        synergy_score += matchups.get("synergy", {}).get(mate, 0)
+
+    # Counter score: higher is better (we counter them)
+    counter_score = 0
+    for enemy in enemy_picks:
+        counter_score += matchups.get("counters", {}).get(enemy, 0)
+
+    # Weighted total
     comfort_mod = {"very_comfortable": 1.2, "comfortable": 1.1, "ok": 1.0, "learning": 0.8}
-    base_score = (2 * role_score + synergy_score) * comfort_mod.get(comfort, 1.0)
-    final_score = base_score
-
-    return round(final_score, 2)
+    score = (2 * role_score + 0.5 * synergy_score + counter_score) * comfort_mod.get(comfort, 1.0)
+    return round(score, 2)
 
 def suggest_heroes(team_picks: List[str], enemy_picks: List[str], missing_roles: List[str]) -> List[str]:
     all_picked = set(team_picks + enemy_picks)
@@ -126,8 +135,31 @@ if __name__ == "__main__":
         print(f"{hero} {atk_icon}: {', '.join(roles)}")
 
     suggestions = suggest_heroes(team, enemy, missing)
-    print("\nTop Hero Suggestions:")
+    print("\nTop Hero Suggestions (with synergy & counters):")
     for hero, info in suggestions[:5]:
         atk_icon = "🗡️" if info['atk'] == "Melee" else "🏹"
-        print(f"{hero} {atk_icon}: {info['score']} [{', '.join(info['tags'])}]")
+        matchups = HERO_MATCHUPS.get(hero, {})
+        synergy_partners = matchups.get("synergy", {})
+        counter_targets = matchups.get("counters", {})
+        countered_by = matchups.get("countered_by", {})
+        bad_synergies = matchups.get("worst_synergy", {})
 
+        good_synergies = [(mate, synergy_partners[mate]) for mate in team if synergy_partners.get(mate, 0) > 0]
+        bad_fits = [(mate, bad_synergies[mate]) for mate in team if bad_synergies.get(mate, 0) < 0]
+        strong_counters = [(enemy_hero, counter_targets[enemy_hero]) for enemy_hero in enemy if counter_targets.get(enemy_hero, 0) > 0]
+        weak_against = [(enemy_hero, countered_by[enemy_hero]) for enemy_hero in enemy if countered_by.get(enemy_hero, 0) < 0]
+
+        print(f"\n{hero} {atk_icon}: {info['score']} [{', '.join(info['tags'])}]")
+
+        if good_synergies:
+            formatted = ', '.join(f"{name} (+{val})" for name, val in good_synergies)
+            print(f"  🤝 Synergizes with: {formatted}")
+        if bad_fits:
+            formatted = ', '.join(f"{name} ({val})" for name, val in bad_fits)
+            print(f"  🚫 Poor synergy with: {formatted}")
+        if strong_counters:
+            formatted = ', '.join(f"{name} (+{val})" for name, val in strong_counters)
+            print(f"  🔥 Counters: {formatted}")
+        if weak_against:
+            formatted = ', '.join(f"{name} ({val})" for name, val in weak_against)
+            print(f"  ⚠️ Countered by: {formatted}")
