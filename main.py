@@ -59,16 +59,37 @@ def score_hero(hero: str, team_picks: List[str], enemy_picks: List[str]) -> floa
     for mate in team_picks:
         synergy_score += matchups.get("synergy", {}).get(mate, 0)
 
-    # Counter score: higher is better (we counter them)
+    # Counter score: how well we counter enemies
     counter_score = 0
     for enemy in enemy_picks:
-        counter_score += matchups.get("counters", {}).get(enemy, 0)
+        val = matchups.get("counters", {}).get(enemy, 0)
+        if val > 0:
+            counter_score += val
+
+    # Countered-by score: how badly they counter us (expecting negative values)
+    countered_score = 0
+    for enemy in enemy_picks:
+        val = matchups.get("countered_by", {}).get(enemy, 0)
+        if val < 0:
+            countered_score += val
 
     # Weighted total
-    comfort_mod = {"very_comfortable": 1.2, "comfortable": 1.1, "ok": 1.0, "learning": 0.8}
-    score = (1.5 * role_score + 1.0 * synergy_score + 1.2 * counter_score) * comfort_mod.get(comfort, 1.0)
-    return round(score, 2)
+    comfort_mod = {"very_comfortable": 1.3, "comfortable": 1.2, "ok": 1.1, "learning": 1.0}
+    score = (
+        1.0 * role_score +
+        1.2 * synergy_score +
+        1.5 * counter_score +
+        1.0 * countered_score  # this is usually negative
+    ) * comfort_mod.get(comfort, 1.0)
 
+    return round(score, 2), {
+        "role": role_score,
+        "synergy": synergy_score,
+        "counter": counter_score,
+        "countered_by": countered_score,
+        "comfort": comfort_mod.get(comfort, 1.0)
+    }
+    
 def suggest_heroes(team_picks: List[str], enemy_picks: List[str], missing_roles: List[str]) -> List[str]:
     all_picked = set(team_picks + enemy_picks)
     scores = {}
@@ -110,7 +131,7 @@ def print_role_summary(role_counts: Dict[str, int], title: str):
             print(f"{role.ljust(15)} {'+' * count}")
 
 if __name__ == "__main__":
-    print("Welcome to the Offlane Hero Picker!")
+    print("Welcome to the MVP - Most Valuable Pick!")
     team = input_hero_list("Enter your team's picks (excluding yourself):")
     enemy = input_hero_list("Enter enemy team's known picks:")
 
