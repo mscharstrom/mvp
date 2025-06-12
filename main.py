@@ -1,6 +1,8 @@
 import json
 from typing import List, Dict
 
+DEFAULT_DESIRED_ROLES = ["Frontliner", "Disabler", "Initiator", "Tower Push", "Wave Clear"]
+
 # Load hero tags (augmented manually or partially from OpenDota roles)
 with open("data/hero_tags.json") as f:
     HERO_TAGS = json.load(f)
@@ -16,13 +18,12 @@ def input_hero_list(prompt: str) -> List[str]:
     print(prompt)
     return [h.strip() for h in input("Comma-separated heroes: ").split(",")]
 
-def get_missing_roles(team_picks: List[str]) -> List[str]:
+def get_missing_roles(team_picks: List[str], desired_roles: List[str]) -> List[str]:
     role_counts = {}
     for hero in team_picks:
         for tag in HERO_TAGS.get(hero, []):
             role_counts[tag] = role_counts.get(tag, 0) + 1
 
-    desired_roles = ["Frontliner", "Disabler", "Initiator", "Tower Push", "Wave Clear"]
     missing_roles = [role for role in desired_roles if role_counts.get(role, 0) == 0]
     return missing_roles
 
@@ -45,14 +46,21 @@ def get_attack_type(hero: str) -> str:
         return "Ranged"
     return "Unknown"
 
-def score_hero(hero: str, team_picks: List[str], enemy_picks: List[str]) -> float:
+
+def score_hero(hero: str, team_picks: List[str], enemy_picks: List[str], desired_roles: List[str]) -> float:
     tags = HERO_TAGS.get(hero, [])
     comfort = HERO_POOL.get(hero, "ok")
     matchups = HERO_MATCHUPS.get(hero, {})
 
-    # Role score: 1 point per missing role covered
-    missing_roles = get_missing_roles(team_picks)
-    role_score = sum(1 for role in tags if role in missing_roles)
+    # Role score: 1 point if role is missing, 0.5 if already present
+    missing_roles = get_missing_roles(team_picks, desired_roles)
+    role_score = 0
+    for role in tags:
+        if role in desired_roles:
+            if role in missing_roles:
+                role_score += 1.0
+            else:
+                role_score += 0.5
 
     # Synergy: sum synergy with teammates
     synergy_score = 0
@@ -79,18 +87,18 @@ def score_hero(hero: str, team_picks: List[str], enemy_picks: List[str]) -> floa
         1.0 * role_score +
         1.2 * synergy_score +
         1.5 * counter_score +
-        1.0 * countered_score  # this is usually negative
+        1.0 * countered_score
     ) * comfort_mod.get(comfort, 1.0)
 
     return round(score, 2), {
-        "role": role_score,
-        "synergy": synergy_score,
-        "counter": counter_score,
-        "countered_by": countered_score,
-        "comfort": comfort_mod.get(comfort, 1.0)
+        "role": round(role_score, 1),
+        "synergy": round(synergy_score, 1),
+        "counter": round(counter_score, 1),
+        "countered_by": round(countered_score, 1),
+        "comfort": round(comfort_mod.get(comfort, 1.0), 1)
     }
-    
-def suggest_heroes(team_picks: List[str], enemy_picks: List[str], missing_roles: List[str]) -> List[str]:
+
+def suggest_heroes(team_picks: List[str], enemy_picks: List[str], missing_roles: List[str], desired_roles: List[str]) -> List[str]:
     all_picked = set(team_picks + enemy_picks)
     scores = {}
     details = {}
@@ -98,12 +106,12 @@ def suggest_heroes(team_picks: List[str], enemy_picks: List[str], missing_roles:
         if hero in all_picked:
             continue
         tags = HERO_TAGS.get(hero, [])
-        score = score_hero(hero, team_picks, enemy_picks)
+        score = score_hero(hero, team_picks, enemy_picks, desired_roles)
         scores[hero] = score
         fulfilled = [tag for tag in tags if tag in missing_roles]
         details[hero] = {
             "score": score,
-            "tags": fulfilled,
+            "tags": tags,
             "atk": get_attack_type(hero)
         }
     sorted_heroes = sorted(details.items(), key=lambda x: x[1]["score"], reverse=True)
@@ -126,9 +134,12 @@ def summarize_roles(picks: List[str]) -> Dict[str, int]:
 
 def print_role_summary(role_counts: Dict[str, int], title: str):
     print(f"\n{title} tags:")
-    for role, count in sorted(role_counts.items(), key=lambda x: (-x[1], x[0])):
-        if role not in ("Melee", "Ranged") and count > 0:
-            print(f"{role.ljust(15)} {'+' * count}")
+    for role in DEFAULT_DESIRED_ROLES:
+        count = role_counts.get(role, 0)
+        if count > 0:
+            bar = "+" * count
+            status = " (already covered)" if count > 1 else ""
+            print(f"{role.ljust(15)} {bar}{status}")
 
 if __name__ == "__main__":
     print("Welcome to the MVP - Most Valuable Pick!")
@@ -136,7 +147,7 @@ if __name__ == "__main__":
     enemy = input_hero_list("Enter enemy team's known picks:")
 
     print("\nAnalyzing team composition...")
-    missing = get_missing_roles(team)
+    missing = get_missing_roles(team, DEFAULT_DESIRED_ROLES)
     print("\nTags to fulfill:")
     for r in missing:
         print(f"- {r}")
@@ -155,7 +166,7 @@ if __name__ == "__main__":
         atk_icon = "🗡️" if get_attack_type(hero) == "Melee" else "🏹"
         print(f"{hero} {atk_icon}: {', '.join(roles)}")
 
-    suggestions = suggest_heroes(team, enemy, missing)
+    suggestions = suggest_heroes(team, enemy, missing, DEFAULT_DESIRED_ROLES)
     print("\nTop Hero Suggestions (with synergy & counters):")
     for hero, info in suggestions[:5]:
         atk_icon = "🗡️" if info['atk'] == "Melee" else "🏹"
